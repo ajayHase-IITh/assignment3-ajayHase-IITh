@@ -48,9 +48,15 @@ then
 		exit 1
 	fi
 fi
-echo "Removing the old writer utility and compiling as a native application"
-make clean
-make CROSS_COMPILE=aarch64-none-linux-gnu-
+#echo "Removing the old writer utility and compiling as a native application"
+#make clean
+#make CROSS_COMPILE=aarch64-none-linux-gnu-
+echo "Using existing writer utility on target"
+
+if [ ! -x ./writer ]; then
+    echo "Error: ./writer not found or not executable"
+    exit 1
+fi
 
 for i in $( seq 1 $NUMFILES)
 do
